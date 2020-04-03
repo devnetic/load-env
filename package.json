@@ -1,0 +1,56 @@
+{
+  "name": "@devnetic/load-env",
+  "version": "1.0.0",
+  "description": "Loads environment variables from .env file",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "coverage": "nyc ava",
+    "test": "ava",
+    "test:build": "npm run build && ava",
+    "test:watch": "npm run test:build -- --watch",
+    "lint": "standard"
+  },
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "test/": "dist/test/"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devnetic/load-env.git"
+  },
+  "readmeFilename": "README.md",
+  "keywords": [
+    "dotenv",
+    "env",
+    ".env",
+    "dot",
+    "dot files",
+    "environment",
+    "variables",
+    "config",
+    "settings"
+  ],
+  "files": [
+    "dist/src/**/*"
+  ],
+  "author": "Álvaro José Agámez Licha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devnetic/load-env/issues"
+  },
+  "homepage": "https://github.com/devnetic/load-env#readme",
+  "devDependencies": {
+    "@ava/typescript": "^1.1.1",
+    "@types/node": "^13.11.0",
+    "@types/sinon": "^9.0.0",
+    "ava": "^3.5.2",
+    "nyc": "^15.0.1",
+    "sinon": "^9.0.1",
+    "standard": "^14.3.3",
+    "typescript": "^3.8.3"
+  }
+}
