@@ -65,7 +65,7 @@ const parse = (config: string, options: ParseOptions = {}): Config => {
  * @param {SaveConfig} config
  * @param {string} [separator='\n']
  */
-const save = (filename: string, config: SaveConfig, separator: string = '\n' ): void => {
+const save = (filename: string, config: SaveConfig, separator: string = '\n' ): boolean => {
   const content: string = Object.entries(config).reduce((content: Array<string>, [key, value]: [string, any]) => {
     content.push(`${key}=${value}`)
 
@@ -73,9 +73,11 @@ const save = (filename: string, config: SaveConfig, separator: string = '\n' ): 
   }, []).join(separator)
 
   try {
-    return fs.writeFileSync(filename, content)
+    fs.writeFileSync(filename, content)
+
+    return true
   } catch (error) {
-    throw new Error(error.message)
+    return false
   }
 }
 

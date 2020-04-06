@@ -1,6 +1,6 @@
 const path = require('path')
 
-const loadEnv = require('./../dist/src')
+const loadEnv = require('./../dist')
 
 const content = `DB_HOST = localhost
 DB_USER = root

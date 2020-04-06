@@ -90,7 +90,7 @@ loadEnv.parse('KLE0002=Error message 02\nKLE0003=Error message 03', { createEnv:
 
 ---
 
-## **loadEnv.save(filename: string, config: Object, separator: string = '\n' ): void**
+## **loadEnv.save(filename: string, config: Object, separator: string = '\n' ): boolean**
 
 To save a config to a `.dot` file, you can use the `loadEnv`'s `.save()` function.
 
