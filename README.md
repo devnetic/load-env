@@ -12,7 +12,7 @@ Another main feature is the possibility to save config values to a `.dot` file.
 
 # Usage
 
-## **loadEnv.load(filename: string = '.env', options: LoadOptions = {}): void | Config**
+### **loadEnv.load(filename: string = '.env', options: LoadOptions = {}): void | Config**
 ```javascript
 LoadOptions {
   returnConfig?: boolean
@@ -51,7 +51,7 @@ The default line separator for `.dot` files is `'\n'`, but you can use a differe
 
 ---
 
-## **loadEnv.set(key: string, value: string): void**
+### **loadEnv.set(key: string, value: string): void**
 
 To set a value in `process.env` just run the `set()` function in the `loadEnv` module with the necessary key and value.
 
@@ -66,7 +66,7 @@ Now the new value is available in `process.env.KLE0003`.
 
 ---
 
-## **loadEnv.parse(config: string, options: ParseOptions = {}): Config**
+### **loadEnv.parse(config: string, options: ParseOptions = {}): Config**
 
 To parse values just run the `parse()` function in the `loadEnv` module with the necessary config values in the follow format `key1=value1\nkey2=value2`.  By default this function returns an object with the parsed keys and values, but could set the values in `process.env` too, just setting the parameter `createEnv` to `true` in the options parameter.
 
@@ -90,7 +90,7 @@ loadEnv.parse('KLE0002=Error message 02\nKLE0003=Error message 03', { createEnv:
 
 ---
 
-## **loadEnv.save(filename: string, config: Object, separator: string = '\n' ): boolean**
+### **loadEnv.save(filename: string, config: Object, separator: string = '\n' ): boolean**
 
 To save a config to a `.dot` file, you can use the `loadEnv`'s `.save()` function.
 
