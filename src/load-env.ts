@@ -1,5 +1,4 @@
 import * as fs from 'fs'
-import { stringify } from 'querystring'
 
 type Config = Record<string, string>
 
@@ -13,7 +12,7 @@ interface ParseOptions {
   createEnv?: boolean
 }
 
-type SaveConfig = Record<string, string | number | boolean>
+type SaveConfig = Record<string, string>
 
 /**
  * Load the .env file and set the ENV variables
@@ -26,10 +25,10 @@ const load = (filename: string = '.env', options: LoadOptions = {}): void | Conf
   try {
     const fileContent: string = fs.readFileSync(filename, 'utf8')
 
-    if (options.returnConfig) {
-      return parse(fileContent, { separator: options.separator || '\n', createEnv: true })
+    if (options.returnConfig === true) {
+      return parse(fileContent, { createEnv: true })
     } else {
-      parse(fileContent, { separator: options.separator || '\n', createEnv: true })
+      parse(fileContent, { createEnv: true })
     }
   } catch (error) {
     throw new Error(error.message)
@@ -46,7 +45,7 @@ const parse = (config: string, options: ParseOptions = {}): Config => {
   let key: string
   let value: string
 
-  return config.trim().split(options.separator || '\n').reduce((result: Config, line: string) => {
+  return config.trim().split(options.separator ?? '\n').reduce((result: Config, line: string) => {
     [key, value] = line.split('=')
 
     if (options.createEnv === true) {
@@ -56,7 +55,7 @@ const parse = (config: string, options: ParseOptions = {}): Config => {
     result[key.trim()] = value.trim()
 
     return result
-  }, {} as Config)
+  }, {})
 }
 
 /**
@@ -65,8 +64,8 @@ const parse = (config: string, options: ParseOptions = {}): Config => {
  * @param {SaveConfig} config
  * @param {string} [separator='\n']
  */
-const save = (filename: string, config: SaveConfig, separator: string = '\n' ): boolean => {
-  const content: string = Object.entries(config).reduce((content: Array<string>, [key, value]: [string, any]) => {
+const save = (filename: string, config: SaveConfig, separator: string = '\n'): boolean => {
+  const content: string = Object.entries(config).reduce((content: string[], [key, value]: [string, string]) => {
     content.push(`${key}=${value}`)
 
     return content

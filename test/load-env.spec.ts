@@ -30,8 +30,8 @@ test('should load and set the correct values from .env file', t => {
 
   loadEnv.load()
 
-  t.is(process.env['KLE0001'], 'Error message 01')
-  t.is(process.env['KLE0002'], 'Error message 02')
+  t.is(process.env.KLE0001, 'Error message 01')
+  t.is(process.env.KLE0002, 'Error message 02')
 })
 
 test('should load and set the correct values from .dot file', t => {
@@ -101,6 +101,7 @@ test('should parse and set the correct values', t => {
   }
 
   t.deepEqual(loadEnv.parse(content, { createEnv: true }), expected)
+  t.deepEqual(loadEnv.parse(content, { createEnv: true, separator: '\n' }), expected)
 })
 
 test('should save the config values', t => {
