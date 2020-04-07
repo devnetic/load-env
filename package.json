@@ -2,7 +2,7 @@
   "name": "@devnetic/load-env",
   "version": "1.1.0",
   "description": "Loads environment variables from .env file",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
@@ -39,7 +39,7 @@
     "settings"
   ],
   "files": [
-    "dist/src/**/*"
+    "dist/**/*"
   ],
   "author": "Álvaro José Agámez Licha",
   "license": "MIT",
